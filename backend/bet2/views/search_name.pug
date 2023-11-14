@@ -1,0 +1,101 @@
+extends base
+
+block content
+  .container-fluid(style='background-color:rgb(20,20,20)')
+    h3.text-success.mb-4 ልተደለዩ መደባት
+    .card.shadow(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+      .card-body
+        .row
+          .col-md-6.text-nowrap
+            #dataTable_length.dataTables_length(aria-controls='dataTable')
+              h3.text-light ጠቕላላ ልተረኸቡ መደባት፦ #{result}
+          
+        .table-responsive.table.mt-2#dataTable(role='grid' aria-describedby='dataTable_info')
+          table.table.dataTable.my-0#dataTable
+            thead
+              tr
+                th.text-warning ሽም
+                th.text-warning መደብ ኣይዲ
+                th.text-warning ዝተመደበ ቕርሺ
+                th.text-warning ጠቕላላ ኦድ
+                th.text-warning ዝተመደበሉ ዕለት
+                th.text-warning ዝበልዖ ቕርሺ
+                th.text-warning ተኸፊሉ
+                th.text-warning ኹነታት
+                th.text-warning ተወሳኺ
+            tbody
+            each bet,i in bets
+              tr
+                td.text-light=bet.userName 
+                td.text-light=bet._id
+                td.text-light=bet.placedMoney
+                td.text-light=bet.totalOdd.toLocaleString({maximumFractionDigits: 2})
+                td.text-light=bet.createdAt.toLocaleString('en-us')
+                td.text-light=`$ ${bet.prizeMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+                td.text-light=bet.payed
+                td.text-light=bet.status
+                td.text-light
+                  button.btn.btn-info.btn-md(type='button' id='modalBtn' data-toggle='modal' data-target=`#modalView${i}` ) ተወሳኺ
+
+              
+            tfoot
+              tr
+                td
+                  strong.text-warning ሽም
+                td 
+                  strong.text-warning መደብ ኣይዲ
+                td 
+                  strong.text-warning ዝተመደበ ቕርሺ
+                td 
+                  strong.text-warning ጠቕላላ ኦድ
+                td 
+                  strong.text-warning ዝተመደበሉ ዕለት
+                td 
+                  strong.text-warning ዝበልዖ ቕርሺ
+                th 
+                  strong.text-warning ተኸፊሉ
+                th 
+                  strong.text-warning ኹነታት
+                th 
+                  strong.text-warning ተወሳኺ
+        .row
+          
+              
+
+    each bet,i in bets
+      .modal.fade.show(style='display:bloc;' role='dialog' tabindex='-1' id=`modalView${i}`)
+        .modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable(role='document')
+          .modal-content
+            .modal-header(style='background-color:rgb(0,0,0);border-color:rgb(41,41,41)')
+              h1.modal-title.text-light= bet.userName
+              button.close(type='button' data-dismiss='modal')
+                span.text-light ×
+            .modal-body(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+              .table-responsive
+                table.table
+                  thead
+                    tr
+                      th.text-warning ሽም ሊግ
+                      th.text-warning ፀወታ
+                      th.text-warning ግምት
+                      th.text-warning ዝተመረፀ
+                      th.text-warning ኦድ
+                  tbody
+                  each game in bet.game
+                    tr
+                      td.text-light=game.leagueName
+                      td.text-light=game.title
+                      td.text-light=game.prediction
+                      td.text-light=game.choice
+                      td.text-light=game.odd
+            .modal-footer(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+              p.text-info ቅድሚ ክፍሊት ምኽፋሎም ከምዝሰዓሩ ብደንቢ ጌርም የረጋግፁ
+              button.btn.btn-light(type='button' data-dismiss='modal') ዕፀው
+              - if (!bet.payed)
+                input(value=bet._id style='display: none' id=`payFieldSearchId`)
+                button.btn.btn-primary(type='button' id='winBtn' onclick=`updatePay("SearchId")`) ከፊሉ
+              - else 
+                - if (bet.status !=='win' && bet.status !=='lose')
+                  input(value=bet._id style='display: none' id=`updateStatusFieldSearchId`) 
+                  button.btn.btn-danger(type='submit' id='winBtn' onclick=`updateLoseStatus("SearchId")`) ተሳዒሩ
+                  button.btn.btn-primary(type='submit' id='winBtn' onclick=`updateWinStatus("SearchId")`) ስዒሩ

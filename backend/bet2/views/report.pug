@@ -1,0 +1,140 @@
+extends base
+
+block content
+  
+  .container-fluid(style='background-color:rgb(20,20,20)')
+    .d-sm-flex.justify-content-between.align-items-center.mb-4
+      h2.text-success.mb-0 ዳሽ ቦርድ
+      nav.navbar.navbar-light.navbar-expand-md
+        .container-fluid
+          h4.text-info ናይ መዓዝ፥
+           
+          .collapse.navbar-collapse#navcol-1
+            ul.nav.navbar-nav
+              li.nav-item(role='presentation')
+                a.text-light.nav-link#today(href='/geez/admin/?timeLine=today') ሎምዓንቲ
+              li.nav-item(role='presentation')
+                a.text-light.nav-link#yesterday(href='/geez/admin/?timeLine=yesterday') ትማሊ
+              li.nav-item(role='presentation')
+                a.text-light.nav-link#week(href='/geez/admin/?timeLine=week') ዝሰሙን እዚ
+              li.nav-item(role='presentation')
+                a.text-light.nav-link#all(href='/geez/admin/?timeLine=all') እስካብ ሐዚ  
+      h3.text-muted.mb-0=timeLineName
+      
+     
+    .row
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-primary.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-primary.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ መደባት
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=totalPayedBets
+              .col-auto
+                i.fas.fa-gamepad.fa-2x.text-gray-100
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-info.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-info.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ ቕርሺ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${totalPlacedMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-primary.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-primary.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ ኸስቢ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${profit.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-success.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-success.font-weight-bold.text-xs.mb-1
+                  span በዝሒ ዝሰዓሩ ሰባት
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=totalWinBets
+              .col-auto
+                i.fas.fa-trophy.fa-2x.text-gray-100
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-success.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-success.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ ናይ ዝሰዓሩ ቕርሺ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${totalPrizeMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-success.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-success.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ ናይ ዝሰዓሩ መደብ ቕርሺ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${totalWinMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-danger.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-danger.font-weight-bold.text-xs.mb-1
+                  span በዝሒ ዝተሰዓሩ ሰባት
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=totalLoseBets
+              .col-auto
+                i.fas.fa-trophy.fa-2x.text-gray-100
+
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-danger.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-danger.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ ናይ ዝተሰዓሩ መደብ ቕርሺ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${totalLoseMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-info.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-info.font-weight-bold.text-xs.mb-1
+                  span ጠቕላላ ናይ Pending መደብ ቕርሺ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${totalPendingMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+
+      .col-md-6.col-xl-3.mb-4
+        .card.shadow.border-left-info.py-2(style='background-color:rgb(51,51,51)')
+          .card-body
+            .row.align-items-center.no-gutters
+              .col.mr-2
+                .text-uppercase.text-info.font-weight-bold.text-xs.mb-1
+                  span Pending ክስዕርዎ ዝኽእሉ ቕርሺ
+                .text-dark.font-weight-bold.h5.mb-0
+                  span.text-light=`$ ${totalPendingPrizeMoney.toLocaleString({useGrouping: true, maximumFractionDigits: 2})}`
+              .col-auto
+                i.fas.fa-dollar-sign.fa-2x.text-gray-100
+

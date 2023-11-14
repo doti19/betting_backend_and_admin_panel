@@ -1,0 +1,50 @@
+extends base
+
+block content
+  .container-fluid(style='background-color:rgb(20,20,20)')
+    h3.text-success.mb-4 ፀወታታት መዝግብ
+    .row.mb-3
+      .col-lg-8 
+        .row
+          .col
+            .card.shadow.mb-3(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+              .card-body
+                form 
+                  .col
+                    .form-group
+                      label(for='dropDown')
+                        if leagues.length >=1
+                          strong.text-light ሊግ ምረፅ
+                        br
+                      select.form-control.bg-dark(id='leagueSelect' style='color:rgb(255,255,255);border-color:rgb(41,41,41)')
+                        optgroup.bg-dark(label='ዝተመዝገቡ ሊጋት ዝርዝር' style='color:rgb(200,200,200')
+                          each league in leagues
+                            option(value=league._id selected style='color:rgb(255,255,255)')= league.title
+                            
+                  
+                  .form-row            
+                    .col
+                      .form-group
+                        label(for='filePicker')
+                          strong ጨዋታታት
+                          br
+                        input(type='file' name='filePicker' id='filePicker')
+                  .form-group
+                    button.btn.btn-success.btn-sm(type='submit' id='registerMatchBtn') ጨዋታታት ኣእቱ
+
+
+
+
+                    
+            .card.shadow.mb-3(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+              .card-body
+                h3 ዝተመዝገቡ ፀወታታት
+                ul.list-group
+                  if matches.length >=1
+                    each match,i in matches
+                      li.list-group-item(style='background-color:rgb(41,41,41)')
+                        span.text-light= match.leagueName
+                        input(value=match._id style='display:none' id=`matchIdField${i}`)
+                        
+                        button.btn.btn-danger.btn-sm(type='submit' onclick=`deleteMatch(${i})`) Delete
+           

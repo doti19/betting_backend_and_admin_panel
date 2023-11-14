@@ -1,0 +1,43 @@
+doctype html 
+html 
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no')
+    meta(name='description' content='A local betting software')
+    link(rel='stylesheet' href='/assets/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/assets/fonts/fontawesome-all.min.css') 
+    link(rel='stylesheet' href='/assets/fonts/material-icons.min.css')
+    link(rel='stylesheet' href='/assets/css/styles.min.css') 
+    title Error - ግእዝ ቤቲንግ
+
+  body(style='background-color:rgb(0,0,0)')
+    .container
+      .row.justify-content-center
+        .col-md-9.col-lg-12.col-xl-10
+          .card.shadow-lg.o-hidden.border-0.my-5(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+            .card-body.p-0
+              .row
+                .col-lg-6.d-none.d-lg-flex
+                  .flex-grow-1.bg-login-image(style='background-image: url(/assets/img/dogs/image3.jpeg')
+                .col-lg-6
+                  .p-5
+                    h1.text-success  ግእዝ ቤቲንግ
+                    .text-center 
+                      h4.text-light.mb-4 ችግር ኣጋጢሙ
+                      p.text-white.mb-0= msg
+                      a.text-info(href='/geez/admin') ← ናብ ዋና ገፅ ተመለስ
+                  
+    //type ur script here
+    
+    script(src='/assets/js/jquery.min.js')
+    script(src='/assets/bootstrap/js/bootstrap.min.js')
+    script(src='/assets/js/script.min.js')
+
+
+//- .container-fluid
+//-     .text-center.mt-5
+//-       .error.mx-auto(data-text='404')
+//-         p.m-0 404
+//-       p.text-dark.mb-5.lead ዛ ገፅ ኣይተረኸበትይ
+//-       p.text-black-50.mb-0 =msg
+//-       a(href='/') ← ናብ ዋና ገፅ ተመለስ

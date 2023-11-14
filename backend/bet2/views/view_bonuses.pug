@@ -1,0 +1,121 @@
+extends base
+
+block content
+  .container-fluid(style='background-color:rgb(20,20,20)')
+    h3.text-success.mb-4 ቦነሳት
+    .card.shadow(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+      .card-body
+        .row
+          .col-md-6.text-nowrap
+            #dataTable_length.dataTables_length(aria-controls='dataTable')
+              h3.text-light ጠቕላላ በዝሒ ቦነሳት #{result}
+          .col-md-6.text-nowrap
+            #dataTable_length.dataTables_length(aria-controls='dataTable')
+              button.btn.btn-success.btn-md(type='button' id='modalBtn' data-toggle='modal' data-target=`#modalAddBonus` ) ቦነስ ኣእቱ +
+              
+         
+        .table-responsibe.table.mt-2#dataTable(role='grid' aria-describedby='dataTable_info')
+          table.table.dataTable.my-0#dataTable
+            thead
+              tr
+                //- th.text-warning ሽም ፀወታ
+                th.text-warning ዝተፈጠረሉ ዕለት
+                th.text-warning ኩነታት
+                th.text-warning መደብ ቕርሺ
+                th.text-warning ዝስዕርዎ ቕርሺ
+
+                th.text-warning ተወሳኺ
+                th.text-warning ተወዲኡ
+            tbody
+            each bonus,i in bonuses
+              tr
+                //- td.text-light= bonus.matchDetail.title
+                
+                td.text-light= bonus.createdAt.toLocaleString('en-us')
+                td.text-light= bonus.status
+                td.text-light= bonus.placedMoney
+                td.text-light= bonus.winMoney
+
+                
+                td.text-light
+                  button.btn.btn-info.btn-md(type='button' id='modalBtn' data-toggle='modal' data-target=`#modalView${i}` ) ተወሳኺ
+                td.text-light
+                  button.btn.btn-danger.btn-md(type='button' id='deleteBtn' onClick=`updateBonusStatus("${bonus._id}")` ) ተወዲኡ
+               
+                
+              
+            tfoot
+              tr
+                td 
+                  strong.text-warning ዝተፈጠረሉ ዕለት
+                td 
+                  strong.text-warning ኩነታት
+                td 
+                  strong.text-warning መደብ ቕርሺ
+                td 
+                  strong.text-warning ዝስዕርዎ ቕርሺ
+                td 
+                  strong.text-warning ተወሳኺ
+                td 
+                  strong.text-warning ተወዲኡ
+                
+                
+    each bonus,i in bonuses
+      .modal.fade.show(style='display:bloc;' role='dialog' tabindex='-1' id=`modalView${i}`)
+        .modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable(role='document')
+          .modal-content
+            .modal-header(style='background-color:rgb(0,0,0);border-color:rgb(41,41,41)')
+              h1.modal-title.text-light ፀወታታት
+              
+              button.close(type='button' data-dismiss='modal')
+                span.text-light ×
+            .modal-body(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+              .table-responsive
+                table.table
+                  thead
+                    tr
+                      th.text-warning ሽም ፀወታ
+                      th.text-warning ዕለት
+                      
+                  tbody
+                  each match in bonus.matchDetail
+                    tr
+                      td.text-light= match.title
+                      td.text-light= match.date
+            .modal-footer(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+              p 
+              button.btn.btn-light(type='button' data-dismiss='modal') ዕፀው
+    .modal.fade.show(style='display:bloc;' role='dialog' tabindex='-1' id=`modalAddBonus`)
+      
+      .modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable(role='document')
+        .modal-content
+          .modal-header(style='background-color:rgb(0,0,0);border-color:rgb(41,41,41)')
+            h1.modal-title.text-light ቦነስ ኣእቱ
+            
+
+            
+            button.close(type='button' data-dismiss='modal')
+              span.text-light ×
+          .modal-body(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+            .table-responsive
+              table.table
+                thead
+                  tr
+                    th.text-warning 
+                    th.text-warning ሽም
+
+                    th.text-warning ዕለት
+                    
+                tbody#tableBody  
+                 
+
+          .modal-footer(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+            .text-light በዝሒ ፀወታታት
+              input.bg-dark(type='number' inputMode='numeric' id='matchNumber' name='match number' class='form-control' style='color:rgb(255,255,255);border-color:rgb(41,41,41);width:50px;display:inline')
+              button.btn.btn-success(type='button' onClick=`matchNumber()`) ቐይር
+            .text-light መደብ ቕርሺ
+              input.bg-dark(type='number' inputMode='numeric' id='placedMoney' name='placed money' class='form-control' style='color:rgb(255,255,255);border-color:rgb(41,41,41)')
+            .text-light ዝስዕርዎ ቕርሺ
+              input.bg-dark(type='number' inputMode='numeric' id='winMoney' name='win money' class='form-control' style='color:rgb(255,255,255);border-color:rgb(41,41,41);')
+            button.btn.btn-light(type='button' data-dismiss='modal') ዕፀው 
+            button.btn.btn-success(type='button' onClick=`createBonus()`) ኣእቱ                                        

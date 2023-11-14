@@ -1,0 +1,25 @@
+const express = require("express");
+const router = express.Router();
+const authController = require("../controllers/authController");
+const userController = require("../controllers/userController");
+const adminController = require('../controllers/adminController');
+const resultController = require('../controllers/resultController');
+router.get('/login', adminController.login);
+
+router.get('/', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.adminHome);
+router.get('/registeredMatches', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.registeredMatches);
+router.get('/registeredLeagues', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.registeredLeagues);
+router.post('/registerLeagues', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.registerLeagues);
+router.get('/view_leagues', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.viewLeagues);
+router.delete('/view_leagues/:leagueId', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.deleteLeague);
+router.get('/view_matches/:league', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.viewMatches);
+router.delete('/view_matches/:matchId', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.deleteMatch);
+router.get('/allBets', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.allBets);
+router.get('/betId/:id', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.singleBet);
+router.get('/betName/:name', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.singleBetName);
+router.get('/payedBets', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.payedBets);
+router.get('/results', adminController.getLeagueResults);
+router.get('/results/:leagueId', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.matchResults);
+router.get('/bonus', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.viewBonuses);
+router.get('/bonusBets', authController.protect, authController.restrictTo("admin", "superadmin", "dev_mgmt"), adminController.viewBonusBets);
+module.exports = router;

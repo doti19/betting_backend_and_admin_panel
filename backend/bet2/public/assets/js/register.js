@@ -1,0 +1,6 @@
+const addLeague=async(title)=>{try{const res=await axios({method:'Post',url:'/geez/admin/registerLeagues/',data:{title:title,}});}catch(err){showAlert('danger','Error: League not added please try again later.');}
+location.reload();}
+const addMatch=async(data)=>{try{const res=await axios({method:'Post',url:'/geez/api/v1/matches',data});if(res.data.status==='Success'){alert('it is success');location.assign('/geez/admin/registeredMatches');location.reload();}}catch(err){showAlert('danger',`Error: ${err}.`);}
+location.reload();}
+if(document.querySelector('#registerMatchBtn')){document.querySelector('#registerMatchBtn').addEventListener('click',e=>{const form=new FormData();form.append('leagueName',document.getElementById('leagueSelect').value);form.append('matchFile',document.getElementById('filePicker').files[0]);addMatch(form);});}
+if(document.querySelector('#registerLeagueBtn')){document.querySelector('#registerLeagueBtn').addEventListener('click',e=>{const inputField=document.querySelector('#leagueInput').value;addLeague(inputField);});}

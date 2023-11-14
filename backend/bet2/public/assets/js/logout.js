@@ -1,0 +1,2 @@
+const logout=async()=>{try{const res=await axios({method:'GET',url:'/geez/api/v1/users/logout',});if(res.data.status==='Success'){alert('it is success');location.replace('/geez/admin/login');}}catch(err){showAlert('danger','Error Loggin out! Try again.')}}
+const logOutBtn=document.querySelector('#logout');if(logOutBtn){logOutBtn.addEventListener('click',logout);}else{alert('no such button');}

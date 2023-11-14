@@ -1,0 +1,40 @@
+//Header
+
+nav.navbar.navbar-dark.align-items-start.sidebar.sidebar-dark.accordion.p-0(style='background-color:rgb(51,51,51)')
+    .container-fluid.d-flex.flex-column.p-0
+      a.navbar-brand.d-flex.justify-content-center.align-items-center.sidebar-brand.m-0(href='#')
+        .sidebar-brand-icon.rotate-n-15
+          i.fas.fa-laugh-wink
+        .sidebar-brand-text.mx-3
+          span Geez Betting
+      hr.sidebar-divider.my-0
+      ul.nav.navbar-nav.text-light#accordionSidebar
+        li.nav-item(role='presentation')
+          a.nav-link(href='/geez/admin?timeLine=today')
+            i.fas.fa-tachometer-alt
+              span ዳሽ ቦርድ (ዋና መእተዊ ገፅ)
+        li.nav-item(role='presentation')
+          a.nav-link(href='/geez/admin/registeredMatches')
+            i.fas.fa-user
+            span ጨወታታት ኣእቱ
+          a.nav-link(href='/geez/admin/registeredLeagues')
+            i.fas.fa-user
+            span ሊግ መዝግብ
+          a.nav-link(href='/geez/admin/view_leagues')
+            i.fas.fa-user
+            span ጨወታታት ረአ
+          a.nav-link(href='/geez/admin/results')
+            i.fas.fa-user
+            span  ውፅኢት ረአ
+          a.nav-link(href='/geez/admin/bonus')
+            i.fas.fa-user
+            span  ቦነስ ኣእቱ
+          a.nav-link(href='/geez/admin/bonusBets')
+            i.fas.fa-user
+            span  ቦነስ መደባት
+
+      .text-center.d-none.d-md-inline
+              button.btn.rounded-circle.border-0#sidebarToggle(type='button')
+
+//End Nav
+//another Nav

@@ -1,0 +1,5 @@
+.dropdown
+                        button.btn.btn-primary.dropdown-toggle(data-toggle='dropdown' aria-expanded='false' type='button' name='dropDown') Dropdown
+                        .dropdown-menu(role='menu')
+                          each league in leagues
+                            a.dropdown-item(role='presentation' href='#') league.title

@@ -1,0 +1,48 @@
+
+#content
+	nav.navbar.navbar-dark.navbar-expand.shadow.mb-4.topbar.static-top(style='background-color:rgb(0,0,0)')
+		.container-fluid
+			button.btn.btn-link.d-md-none.rounded-circle.mr-3#sidebarToggleTop(type='button')
+				i.fas.fas-bars
+			form.form-inline.d-none.d-sm-inline-block.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
+				.input-group
+					input.bg-dark.form-control.border-0.small(type='text' id='searchIdInputField' placeholder='መደብ ብኣይዲ ድለ.....' style='color:rgb(255,255,255)')
+					.input-group-append
+						button.btn.btn-dark.py-0(type='submit' id='searchIdBtn' )
+							i.fas.fa-search
+			form.form-inline.d-none.d-sm-inline-block.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
+				.input-group
+					input.bg-dark.form-control.border-0.small(type='text' id='searchNameInputField' placeholder='መደብ ብሽም ድለ.....' style='color:rgb(255,255,255)')
+					.input-group-append
+						button.btn.btn-dark.py-0(type='submit' id='searchNameBtn' )
+							i.fas.fa-search
+							
+			ul.nav.navbar-nav.flex-nowrap.ml-auto
+				li.nav-item.mx-1(role='presentation')
+					.nav-item 
+						a.nav-link(href='/geez/admin/allBets')
+							i.material-icons.fa-fw money_off
+				li.nav-item.mx-1(role='presentation')
+					.nav-item 
+						a.nav-link(href='/geez/admin/payedBets')
+							i.material-icons.fa-fw attach_money
+				.d-none.d-sm-block.topbar-divider
+				li.nav-ite.dropdown.no-arrow(role='presentation')
+					.nav-item.dropdown.no-arrow 
+						a.dropdown-toggle.nav-link(data-toggle='dropdown' aria-expanded='false' href='#')
+							span.d-none.d-lg-inline.mr-2.text-light.small ኣድሚን
+							img.border.rounded-circle.img-profile(src='/assets/img/avatars/avatar1.jpeg')
+						.dropdown-menu.shadow.dropdown-menu-right.animated--grow-in(role='menu')
+							a.dropdown-item(role='presentation' href='/geez/admin/changePassword') ፓስዎርድ ቐይር
+								i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+								
+							a.dropdown-item(role='presentation' href='#')   Settings
+								i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+								
+							a.dropdown-item(role='presentation' href='#') Activity log
+								i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400
+									
+							.dropdown-divider
+							a.dropdown-item(role='presentation' href='#' id='logout') Logout
+							i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+//End for another nav in _header

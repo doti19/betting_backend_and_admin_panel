@@ -1,0 +1,43 @@
+extends base
+
+block content
+  .container-fluid(style='background-color:rgb(20,20,20)')
+    h3.text-success.mb-4 ውፅኢታት
+    .card.shadow(style='background-color:rgb(51,51,51);border-color:rgb(41,41,41)')
+      .card-body
+        .row
+          .col-md-6.text-nowrap
+            #dataTable_length.dataTables_length(aria-controls='dataTable')
+              h3.text-light ጠቕላላ በዝሒ ሊጋት #{result}
+          
+        .table-responsibe.table.mt-2#dataTable(role='grid' aria-describedby='dataTable_info')
+          table.table.dataTable.my-0#dataTable
+            thead
+              tr
+                th.text-warning ሽም ሊግ
+
+                th.text-warning ዝተፈጠረሉ ዕለት
+                th.text-warning ተወሳኺ
+            tbody
+            each league,i in leagues
+              tr
+                td.text-light= league.title 
+
+                
+                td.text-light= league.createdAt.toLocaleString('en-us')
+                
+                td.text-light
+                  //- button.btn.btn-info.btn-md(type=''   id='viewMatches' onclick=`viewMatches("${league.title}")` ) ፀወታታት
+                  a.btn.btn-info.btn-md(href=`results/${league._id}`) ፀወታታት
+                td.text-light
+                  button.btn.btn-danger.btn-md(type='button' id='deleteBtn' onClick=`deleteResults("${league.title}")` ) ደምስስ
+              
+            tfoot
+              tr
+                td
+                  strong.text-warning ሽም ሊግ
+
+                td 
+                  strong.text-warning ዝተፈጠረሉ ዕለት
+                td 
+                  strong.text-warning ተወሳኺ

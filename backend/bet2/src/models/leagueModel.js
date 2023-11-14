@@ -1,0 +1,1 @@
+const mongoose=require("mongoose");const Schema=mongoose.Schema;const leagueSchema=new Schema({title:{type:String,uppercase:true,unique:true,trim:true,req:[true,'A League Must Have a Title'],},},{timestamps:true,});module.exports=mongoose.model("League",leagueSchema);

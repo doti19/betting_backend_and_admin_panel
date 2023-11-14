@@ -1,0 +1,1 @@
+document.querySelector('#searchBtn').addEventListener('click',e=>{const inputField=document.querySelector('#searchInputField').value;search(inputField);});

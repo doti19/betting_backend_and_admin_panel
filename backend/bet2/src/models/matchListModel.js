@@ -1,0 +1,1 @@
+const mongoose=require("mongoose");const Schema=mongoose.Schema;const matchListSchema=new Schema({title:{type:String,trim:true,},date:{type:String,trim:true,},prediction:[{name:String,odds:[{choice:String,odd:Number,},],},],},{timestamps:true,});module.exports=mongoose.model("matchList",matchListSchema);

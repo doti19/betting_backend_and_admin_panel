@@ -1,0 +1,47 @@
+doctype html 
+html 
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no')
+    meta(name='description' content='A local betting software')
+    link(rel='stylesheet' href='/assets/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/assets/fonts/fontawesome-all.min.css') 
+    link(rel='stylesheet' href='/assets/fonts/material-icons.min.css')
+    link(rel='stylesheet' href='/assets/css/styles.min.css') 
+    title ግእዝ ቤቲንግ
+  body#page-top
+    #wrapper
+      //Header
+      include _side_nav
+      //End Nav
+      //another Nav
+      .d-flex.flex-column#content-wrapper(style='background-color:rgb(40,40,40)')
+        include _header
+        block content
+
+      
+      
+            
+        //Footer
+        footer.sticky-footer(style='background-color:rgb(0,0,0)')
+          a.border.rounded.d-inline.scroll-to-top(href='#page-top')
+            i.fas.fa-angle-up
+          .container.my-auto
+            .text-center.border.rounded-0.border-info.d-flex.d-sm-flex.flex-column.flex-grow-1.flex-shrink-0.flex-fill.justify-content-between.align-items-stretch.align-content-around.my-auto.justify-content-sm-center.align-items-sm-center.copyright(style='width: 415px;height: 40px;')
+              span(style='margin-right:0; color:white') Copyright © Geez Betting 2022
+              span(style='margin: 0px;margin-right: 0px; margin-left: 0;color:white') Developed By: Saminas Hagos
+          //End of footer
+    script(src='/assets/js/jquery.min.js')
+    script(src='/assets/bootstrap/js/bootstrap.min.js')
+    script(src='/assets/js/script.min.js')
+    script(src='/assets/js/axios.min.js')
+    script(src='/assets/js/alerts.js')
+    script(src='/assets/js/logout.js')
+    script(src='/assets/js/search.js')
+    script(src='/assets/js/delete.js')
+    script(src='/assets/js/register.js')
+    script(src='/assets/js/updateBet.js')
+    script(src='/assets/js/fetchMatch.js')
+    script(src='/assets/js/updateMatch.js')
+    //- script(src='/assets/js/report.js')
+

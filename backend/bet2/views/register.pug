@@ -1,0 +1,55 @@
+doctype html 
+html 
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-widgth, initial-scale=1.0, shrink-to-fit=no')
+    meta(name='description' content='A local betting software')
+    link(rel='stylesheet' href='/assets/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/assets/fonts/fontawesome-all.min.css') 
+    link(rel='stylesheet' href='/assets/fonts/material-icons.min.css')
+    link(rel='stylesheet' href='/assets/css/styles.min.css') 
+    title Register - Hope Betting
+
+  body.bg-gradient-primary
+    .container
+      .card.shadow-lg.o-hidden.border-0.my-5
+        .card-body.p-0
+          .row
+            .col-lg-5.d-none.d-lg-flex
+              .flex-grow-1.bg-register-image(style='background-image: url(/assets/img/dogs/image2.jpeg')
+            .col-lg-7
+              .p-5
+                h1 ሆፕ ቤቲንግ
+                .text-center
+                  h4.text-dark.mb-4 ተመዝገብ
+                form.user(action= '/api/v1/users/signup', method='POST')
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      input.form-control.form-control-user(type='text' id='exampleFirstName' placeholder='ሽም' name='name')
+                    .col-sm-6
+                      label(for='Dropdown') ስራሕ ክፍሊ
+                      .dropdown
+                        button.btn.btn-primary.dropdown-toggle(data-toggle='dropdown' aria-expanded='false' type='button') Dropdown
+                        .dropdown-menu(role='menu')
+                          a.dropdown-item(role='presentation' href='#') user
+                          a.dropdown-item(role='presentation' href='#') admin
+                          a.dropdown-item(role='presentation' href='#') superAdmin
+                  .form-group
+                    input.form-control.form-control-user(type='email' id='exampleInputEmail' aria-describedby='emailHelp' placeholder='ኢሜይል ኣድራሻ' name='email')
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      input.form-control.form-control.user(type='password' id='examplePasswordInput' placeholder='መሕለፊ ቃል' name='password')
+                    .col-sm-6
+                      input.form-control.form-control-user(type='password' id='exampleRepeatPasswordInput' placeholder='መሕለፊ ቃል ድገም' name='passwordConfirm')
+                  button.btn.btn-primary.btn-block.text-white.btn-user(type='submit') ተመዝገብ
+                  hr
+                  hr
+              .text-center
+                a.small(href='#') መሕለፊ ቃል ረሲዐዮ?
+              .text-center
+                a.small(href='/geez/admin/login') ተመዝጊበ ነይረ? &nbsp; ክኣትው
+
+    script(src='/assets/js/jquery.min.js')
+    script(src='/assets/bootstrap/js/bootstrap.min.js')
+    script(src='/assets/js/script.min.js')
+

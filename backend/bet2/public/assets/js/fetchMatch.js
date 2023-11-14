@@ -1,0 +1,1 @@
+const viewMatches=async(title)=>{try{const res=await axios({method:'Get',url:`/geez/api/v1/matches/league/${title}`,});if(res.data.status==='Success'){location.assign('/geez/admin/view_matches/');}}catch(err){showAlert('danger',err.response.data.message);}}
